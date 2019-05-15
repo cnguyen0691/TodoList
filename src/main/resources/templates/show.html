@@ -7,16 +7,13 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<form action="#" th:action="@{/process}" th:object="${todo}" method="post">
-    Id: <input type="number" th:field="*{id}"/><br/>
-    Name: <input type="text" th:field="*{name}"/>
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
-    Due date: <input type="number" th:field="*{duedate}"/>
-    <span th:if="${#fields.hasErrors('duedate')}" th:errors="*{duedate}"></span><br/>
-    Priority: <textarea rows="3" th:field="*{priority}"></textarea>
-    <span th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}"></span><br/>
-    <input type="submit" value="Submit">
-</form>
+<a href="/">Show ALl Todo list</a><br/>
+Name:<span th:text="${todo.name}"></span><br/>
+Due date:<span th:text="${todo.duedate}"></span><br/>
+Priority:<span th:text="${todo.priority}"></span><br/>
+
+<a th:href="@{/delete/{id}(id=${todo.id})}">Delete this todo</a>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

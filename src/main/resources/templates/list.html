@@ -7,10 +7,24 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<a href="/add"> To do list </a><br/>
-<div th:each="todo:${todos}">
-    <h4 th:inline="text">[[${todo.id}]]@[[${todo.name}]]@[[${todo.duedate}]]</h4>
-    <textarea th:inline="text"> [[${todo.priority}]]</textarea>
+<a href="/add">Add TodoList</a><br/>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Due date</th>
+        <th>Priority</th>
+    </tr>
+    <tr th:each="todo: ${todos}">
+        <td th:text="${todo.name}"></td>
+        <td th:text="${todo.duedate}"></td>
+        <td th:text="${todo.priority}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${todo.id})}">Update</a>
+            <a th:href="@{/detail/{id}(id=${todo.id})}">Details</a>
+            <a th:href="@{/delete/{id}(id=${todo.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

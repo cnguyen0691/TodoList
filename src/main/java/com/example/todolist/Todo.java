@@ -14,6 +14,7 @@ public class Todo {
     private long id;
 
     @NotNull
+    @Size(min=1)
     private String name;
 
     @NotNull
